@@ -19,8 +19,8 @@ export class RealEstate {
   @Column({ default: false })
   sold: boolean;
 
-  @Column("decimal", { precision: 12, scale: 2 })
-  value: number;
+  @Column("decimal", { precision: 12, scale: 2, default: 0 })
+  value: number | string;
 
   @Column()
   size: number;
