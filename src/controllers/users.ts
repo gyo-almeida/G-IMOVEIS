@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { iUserReq, iUserUpdate } from "../interfaces/user";
 import { createUser } from "../services/user/create";
+import { deleteUser } from "../services/user/delete";
 import { getUsers } from "../services/user/getUser";
 import { updateUser } from "../services/user/update";
 
@@ -30,8 +31,11 @@ export async function updateUserController(
 ): Promise<Response> {
   const id = Number(req.params.id);
   const userData: iUserUpdate = req.body;
+  const admin: boolean = req.user.admin;
+  const tokenId = req.user.id;
+  console.log(admin);
 
-  const user = await updateUser(id, userData);
+  const user = await updateUser(id, userData, admin, tokenId);
 
   return resp.json(user);
 }
@@ -40,9 +44,9 @@ export async function deleteUserController(
   req: Request,
   resp: Response
 ): Promise<Response> {
-  const data: iUserReq = req.body;
+  const id = Number(req.params.id);
 
-  const newUser = await createUser(data);
+  await deleteUser(id);
 
-  return resp.status(201).json(newUser);
+  return resp.status(204).json();
 }

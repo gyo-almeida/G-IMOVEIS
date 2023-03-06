@@ -3,16 +3,23 @@ import { iUser, iUserUpdate } from "../../interfaces/user";
 import { User } from "../../entities";
 import { AppDataSource } from "../../data-source";
 import { returnUserSchema } from "../../schemas/user";
+import { AppError } from "../../errors";
 
 export async function updateUser(
   id: number,
-  newUser: iUserUpdate
+  newUser: iUserUpdate,
+  admin: boolean,
+  tokenId: number
 ): Promise<iUser> {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const oldUser = await userRepository.findOneBy({
     id: id,
   });
+
+  if (!admin && id !== tokenId && tokenId !== oldUser?.id) {
+    throw new AppError("User doesn't have permission", 404);
+  }
 
   const user = userRepository.create({
     ...oldUser,
