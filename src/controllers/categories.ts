@@ -20,11 +20,7 @@ export async function getPropertiesByCategorieController(
   req: Request,
   resp: Response
 ): Promise<Response> {
-  const loginData: iLoginReq = req.body;
-
-  const token = await createLogin(loginData);
-
-  return resp.json(token);
+  return resp.json();
 }
 
 export async function getCategoriesController(

@@ -7,6 +7,7 @@ import {
   OneToOne,
   JoinColumn,
   OneToMany,
+  ManyToOne,
 } from "typeorm";
 import { Address } from "./addresses";
 import { Category } from "./categories";
@@ -16,8 +17,8 @@ export class RealEstate {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
-  @Column({ default: false })
-  sold: boolean;
+  @Column({ type: "boolean", default: false, nullable: true })
+  sold?: boolean | null | undefined;
 
   @Column("decimal", { precision: 12, scale: 2, default: 0 })
   value: number | string;
@@ -33,8 +34,8 @@ export class RealEstate {
 
   @OneToOne(() => Address)
   @JoinColumn()
-  addressId: Address;
+  address: Address;
 
-  @OneToMany(() => Category, (category) => category.id)
-  categoryId: Category;
+  @ManyToOne(() => Category, { nullable: true })
+  category?: Category | null | undefined;
 }

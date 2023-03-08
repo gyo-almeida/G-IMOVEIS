@@ -9,5 +9,5 @@ export async function deleteUser(id: number): Promise<void> {
     id: id,
   });
 
-  await userRepository.remove(user!);
+  await userRepository.softRemove(user!);
 }

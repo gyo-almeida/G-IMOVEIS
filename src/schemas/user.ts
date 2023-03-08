@@ -19,7 +19,7 @@ export const returnUserSchema = userReqSchema
     id: z.number(),
     createdAt: z.string(),
     updatedAt: z.string(),
-    deleteAt: z.string().nullish(),
+    deletedAt: z.string().nullable(),
   })
   .omit({ password: true });
 

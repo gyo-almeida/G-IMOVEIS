@@ -10,5 +10,5 @@ export async function createLoginController(
 
   const token = await createLogin(loginData);
 
-  return resp.json(token);
+  return resp.json({ token: token });
 }

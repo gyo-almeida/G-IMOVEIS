@@ -2,9 +2,8 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToOne,
   JoinColumn,
-  OneToMany,
+  ManyToOne,
 } from "typeorm";
 import { RealEstate } from "./real_estate";
 import { User } from "./users";
@@ -14,16 +13,15 @@ export class Schedule {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
-  @Column("date")
+  @Column({ type: "date" })
   date: string;
 
-  @Column("time")
+  @Column({ type: "time" })
   hour: number;
 
-  @OneToMany(() => RealEstate, (realEstate) => realEstate.id)
-  realEstateId: RealEstate;
+  @ManyToOne(() => RealEstate)
+  realEstate: RealEstate;
 
-  @OneToOne(() => User)
-  @JoinColumn()
-  userId: User;
+  @ManyToOne(() => User)
+  user: User;
 }
