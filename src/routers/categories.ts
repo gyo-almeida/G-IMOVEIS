@@ -5,6 +5,7 @@ import {
   getCategoriesController,
 } from "../controllers/categories";
 import { validateAdmin } from "../middlewares/validateAdmin";
+import { validateCategoryId } from "../middlewares/validateCategoryId";
 import { validateCategoryName } from "../middlewares/validateCategoryName";
 import { validateData } from "../middlewares/validateData";
 import { validateToken } from "../middlewares/validateToken";
@@ -21,4 +22,8 @@ categoriesRoutes.post(
   createCategoriesController
 );
 categoriesRoutes.get("", getCategoriesController);
-categoriesRoutes.get("/:id/realEstate", getPropertiesByCategorieController);
+categoriesRoutes.get(
+  "/:id/realEstate",
+  validateCategoryId,
+  getPropertiesByCategorieController
+);
