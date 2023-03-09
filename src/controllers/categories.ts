@@ -3,6 +3,7 @@ import { iReqCategory } from "../interfaces/categories";
 import { iLoginReq } from "../interfaces/login";
 import { createCategory } from "../services/categories/create";
 import { getCategories } from "../services/categories/getCategories";
+import { getRealEstateByCategoryService } from "../services/categories/getRealEstateByCategories";
 import { createLogin } from "../services/login/login";
 
 export async function createCategoriesController(
@@ -20,7 +21,11 @@ export async function getPropertiesByCategorieController(
   req: Request,
   resp: Response
 ): Promise<Response> {
-  return resp.json();
+  const idData = Number(req.params.id);
+
+  const realEstatesByCategory = await getRealEstateByCategoryService(idData);
+
+  return resp.json(realEstatesByCategory);
 }
 
 export async function getCategoriesController(

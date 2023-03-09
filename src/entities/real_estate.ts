@@ -20,22 +20,22 @@ export class RealEstate {
   @Column({ type: "boolean", default: false, nullable: true })
   sold?: boolean | null | undefined;
 
-  @Column("decimal", { precision: 12, scale: 2, default: 0 })
+  @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
   value: number | string;
 
   @Column()
   size: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: "date" })
   createdAt: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: "date" })
   updatedAt: string;
 
   @OneToOne(() => Address)
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(() => Category, { nullable: true })
-  category?: Category | null | undefined;
+  @ManyToOne(() => Category)
+  category: Category | null | undefined;
 }
