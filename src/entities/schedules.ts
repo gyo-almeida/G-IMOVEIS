@@ -17,7 +17,7 @@ export class Schedule {
   date: string;
 
   @Column({ type: "time" })
-  hour: number;
+  hour: string;
 
   @ManyToOne(() => RealEstate)
   realEstate: RealEstate;

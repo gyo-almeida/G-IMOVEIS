@@ -33,7 +33,6 @@ export async function updateUserController(
   const userData: iUserUpdate = req.body;
   const admin: boolean = req.user.admin;
   const tokenId = req.user.id;
-  console.log(admin);
 
   const user = await updateUser(id, userData, admin, tokenId);
 
