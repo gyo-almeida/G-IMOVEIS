@@ -1,12 +1,13 @@
 import { z } from "zod";
 import { multipleRealEstateSchema, returnRealEstateSchema } from "./realEstate";
 
-export const reqCategorySchema = z.object({
+export const returnCategorySchema = z.object({
+  id: z.number(),
   name: z.string(),
 });
 
-export const returnCategorySchema = reqCategorySchema.extend({
-  id: z.number(),
+export const reqCategorySchema = returnCategorySchema.omit({
+  id: true,
 });
 
 export const multipleCategories = returnCategorySchema.array();
@@ -19,5 +20,5 @@ export const getRealEstateWithoutCategory = returnRealEstateSchema
   .array();
 
 export const getRealEstateByCategorySchema = returnCategorySchema.extend({
-  realEstates: getRealEstateWithoutCategory,
+  realEstate: getRealEstateWithoutCategory,
 });

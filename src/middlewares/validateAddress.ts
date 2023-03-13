@@ -21,7 +21,7 @@ export async function validateAddress(
   });
 
   if (verifyAddress) {
-    throw new AppError(`Address already exists`, 404);
+    throw new AppError(`Address already exists`, 409);
   }
 
   return next();

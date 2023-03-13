@@ -13,14 +13,9 @@ export async function createSchedulesController(
 
   const splitHour = hour.split(":");
 
-  const newSchedule = await createScheduleService(
-    userId,
-    scheduleData,
-    date,
-    splitHour
-  );
+  await createScheduleService(userId, scheduleData, date, splitHour);
 
-  return resp.status(201).json(newSchedule);
+  return resp.status(201).json({ message: "Schedule created" });
 }
 
 export async function getScheduleByRealEstateController(

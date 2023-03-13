@@ -28,15 +28,22 @@ export async function createScheduleService(
     .getOne();
 
   if (validateDateAndHour) {
-    throw new AppError("Schedule already exists", 409);
+    throw new AppError(
+      "Schedule to this real estate at this date and time already exists",
+      409
+    );
   }
 
   if (date.getDay() === 6 || date.getDay() === 5) {
-    throw new AppError("Schedule can't be on the weekend", 409);
+    throw new AppError("Invalid date, work days are monday to friday", 400);
+  }
+  console.log(hour[0]);
+  if (hour[0] > "18") {
+    throw new AppError("Invalid hour, available times are 8AM to 18PM", 400);
   }
 
-  if (hour[0] > "18" || hour[0] < "8") {
-    throw new AppError("Schedule can't be made outside of business hours", 409);
+  if ("08" > hour[0]) {
+    throw new AppError("Invalid hour, available times are 8AM to 18PM", 400);
   }
 
   const validateUser = await scheduleRepository
@@ -49,12 +56,19 @@ export async function createScheduleService(
     .getOne();
 
   if (validateUser) {
-    throw new AppError("User already have a schedule at that time", 409);
+    throw new AppError(
+      "User schedule to this real estate at this date and time already exists",
+      409
+    );
   }
 
   const realEstate = await realEstateRepository.findOneBy({
     id: scheduleData.realEstateId!,
   });
+
+  if (!realEstate) {
+    throw new AppError(`RealEstate not found`, 404);
+  }
 
   const user = await userRepository.findOneBy({
     id: userId,

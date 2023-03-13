@@ -1,12 +1,11 @@
 import { Repository } from "typeorm";
 import { Category } from "../../entities";
 import { AppDataSource } from "../../data-source";
-import { iRealEstateByCategories } from "../../interfaces/categories";
-import { getRealEstateByCategorySchema } from "../../schemas/categories";
+import { iReturnCategory } from "../../interfaces/categories";
 
 export async function getRealEstateByCategoryService(
   idData: number
-): Promise<iRealEstateByCategories> {
+): Promise<iReturnCategory | null> {
   const categoryRepository: Repository<Category> =
     AppDataSource.getRepository(Category);
 
@@ -15,11 +14,9 @@ export async function getRealEstateByCategoryService(
       id: idData,
     },
     relations: {
-      realEstates: true,
+      realEstate: true,
     },
   });
 
-  const returnRealEstates = getRealEstateByCategorySchema.parse(category!);
-
-  return returnRealEstates;
+  return category;
 }

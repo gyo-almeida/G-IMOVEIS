@@ -19,7 +19,7 @@ export const validateCategoryId = async (
   });
 
   if (findById.length === 0) {
-    throw new AppError("Id doesn't exist", 409);
+    throw new AppError("Category not found", 404);
   }
 
   return next();

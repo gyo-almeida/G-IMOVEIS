@@ -11,7 +11,6 @@ export async function getRealEstate(): Promise<any> {
   const realEstate: Array<RealEstate> = await realEstateRepository.find({
     relations: {
       address: true,
-      category: true,
     },
   });
 

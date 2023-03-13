@@ -10,7 +10,7 @@ export function validateAdmin(
   const admin = req.user.admin;
 
   if (!admin) {
-    throw new AppError(`User does't have permission`, 403);
+    throw new AppError("Insufficient permission", 403);
   }
 
   return next();

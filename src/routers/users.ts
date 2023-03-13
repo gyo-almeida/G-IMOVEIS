@@ -8,6 +8,7 @@ import {
 import { validateAdmin } from "../middlewares/validateAdmin";
 import { validateData } from "../middlewares/validateData";
 import { validateEmail } from "../middlewares/validateEmail";
+import { validateID } from "../middlewares/validateID";
 import { validateToken } from "../middlewares/validateToken";
 import { validateUser } from "../middlewares/validateUser";
 
@@ -32,7 +33,7 @@ userRoutes.patch(
 userRoutes.delete(
   "/:id",
   validateToken,
-  validateAdmin,
   validateUser,
+  validateAdmin,
   deleteUserController
 );

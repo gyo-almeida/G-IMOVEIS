@@ -19,7 +19,7 @@ export const validateCategoryName = async (
   });
 
   if (findName.length > 0) {
-    throw new AppError("Name already exist", 409);
+    throw new AppError("Category already exists", 409);
   }
 
   return next();

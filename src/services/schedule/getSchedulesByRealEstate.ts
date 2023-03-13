@@ -1,23 +1,26 @@
 import { Repository } from "typeorm";
-import { RealEstate, Schedule } from "../../entities";
+import { RealEstate } from "../../entities";
 import { AppDataSource } from "../../data-source";
-import { iScheduleByRealEstate } from "../../interfaces/schedules";
-import { getSchedulesByRealEstateSchema } from "../../schemas/schedules";
+import { AppError } from "../../errors";
 
 export async function getSchedulesByRealEstateService(
   id: number
-): Promise<RealEstate | null> {
+): Promise<RealEstate | null | { message: string }> {
   const realEstateRepository: Repository<RealEstate> =
     AppDataSource.getRepository(RealEstate);
 
-  const schedulesRealEstate = realEstateRepository
+  const schedulesRealEstate = await realEstateRepository
     .createQueryBuilder("real_estate")
-    .select(["real_estate", "schedules"])
-    .innerJoin("real_estate.schedules", "schedules")
+    .innerJoinAndSelect("real_estate.address", "address")
+    .innerJoinAndSelect("real_estate.category", "category")
+    .innerJoinAndSelect("real_estate.schedules", "schedules")
+    .innerJoinAndSelect("schedules.user", "user")
     .where("real_estate.id= :id", { id: id })
     .getOne();
 
-  //   const returnSchedules = getSchedulesByRealEstateSchema.parse();
+  if (schedulesRealEstate === null) {
+    throw new AppError(`RealEstate not found`, 404);
+  }
 
-  return schedulesRealEstate!;
+  return schedulesRealEstate;
 }

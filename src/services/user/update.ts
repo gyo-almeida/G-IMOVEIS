@@ -18,7 +18,7 @@ export async function updateUser(
   });
 
   if (!admin && id !== tokenId && tokenId !== oldUser?.id) {
-    throw new AppError("User doesn't have permission", 404);
+    throw new AppError("Insufficient permission", 403);
   }
 
   const user = userRepository.create({
