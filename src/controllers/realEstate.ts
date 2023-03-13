@@ -8,6 +8,7 @@ export async function createRealEstateController(
   resp: Response
 ): Promise<Response> {
   const realEstateData: iReqRealEstate = req.body;
+  console.log(realEstateData.categoryId);
 
   const realEstate = await createRealEstate(realEstateData);
 

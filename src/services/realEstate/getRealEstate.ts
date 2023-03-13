@@ -1,8 +1,6 @@
 import { Repository } from "typeorm";
 import { RealEstate } from "../../entities";
 import { AppDataSource } from "../../data-source";
-import { multipleRealEstateSchema } from "../../schemas/realEstate";
-import { iRealEstates } from "../../interfaces/realEstate";
 
 export async function getRealEstate(): Promise<any> {
   const realEstateRepository: Repository<RealEstate> =
@@ -14,8 +12,5 @@ export async function getRealEstate(): Promise<any> {
     },
   });
 
-  //   const realEstateList = multipleRealEstateSchema.parse(realEstate);
-
-  //   console.log(realEstateList);
   return realEstate;
 }

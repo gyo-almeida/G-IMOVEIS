@@ -1,12 +1,11 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Address, Category, RealEstate } from "../../entities";
-import { iRealEstate, iReqRealEstate } from "../../interfaces/realEstate";
-import { returnRealEstateSchema } from "../../schemas/realEstate";
+import { iReqRealEstate } from "../../interfaces/realEstate";
 
 export async function createRealEstate(
   realEstateData: iReqRealEstate
-): Promise<iRealEstate> {
+): Promise<RealEstate> {
   const addressRepository: Repository<Address> =
     AppDataSource.getRepository(Address);
 
@@ -32,7 +31,5 @@ export async function createRealEstate(
 
   await realEstateRepository.save(realEstate);
 
-  const newRealEstate = returnRealEstateSchema.parse(realEstate);
-
-  return newRealEstate;
+  return realEstate;
 }

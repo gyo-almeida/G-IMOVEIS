@@ -5,7 +5,6 @@ import {
 } from "../controllers/schedules";
 import { validateAdmin } from "../middlewares/validateAdmin";
 import { validateData } from "../middlewares/validateData";
-import { validateRealEstate } from "../middlewares/validateRealEstate";
 import { validateToken } from "../middlewares/validateToken";
 import { reqScheduleSchema } from "../schemas/schedules";
 

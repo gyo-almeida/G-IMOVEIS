@@ -6,7 +6,6 @@ import {
 import { validateAddress } from "../middlewares/validateAddress";
 import { validateAdmin } from "../middlewares/validateAdmin";
 import { validateData } from "../middlewares/validateData";
-import { validateRealEstate } from "../middlewares/validateRealEstate";
 import { validateToken } from "../middlewares/validateToken";
 import { reqRealEstateSchema } from "../schemas/realEstate";
 
@@ -16,7 +15,7 @@ realEstateRoutes.post(
   "",
   validateToken,
   validateAdmin,
-  validateRealEstate,
+  validateData(reqRealEstateSchema),
   validateAddress,
   createRealEstateController
 );
