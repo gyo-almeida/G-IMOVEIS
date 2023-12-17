@@ -1,4 +1,6 @@
-# 🏁 Projeto Final: KImóveis - TypeORM com Relacionamentos
+# 🏁 G-Imóveis - TypeORM com Relacionamentos
+
+Este projeto trata-se de um serviço de back-end responsável por gerenciar uma imobiliária utilizando TypeORM e relacionamentos com base no diagrama abaixo e foi desenvolvido por mim (Gyovanna) durante o curso de desenvolvimento web full-stack da Kenzie Academy Brasil porém os testes rodados nele foram desenvolvidos pelos professores da Kenzie para avaliar o projeto.
 
 Para inciar este projeto, é necessário instalar as dependências, que serão utilizadas nos testes. Portanto utilize o comando abaixo para instalar tais dependências:
 
