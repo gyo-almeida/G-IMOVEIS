@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-# G-IMOVEIS
-=======
 # 🏁 G-Imóveis - TypeORM com Relacionamentos
 
-Este projeto trata-se de um serviço de back-end responsável por gerenciar uma imobiliária utilizando Node.JS e TypeScript desenvolvido por mim durante o curso de desenvolvimento web full-stack da Kenzie Academy Brasil porém os testes rodados nele foram desenvolvidos pelos professores da Kenzie para avaliar o projeto.
+Este projeto trata-se de um serviço de back-end responsável por gerenciar uma imobiliária utilizando Node.JS e TypeScript desenvolvido durante o curso de desenvolvimento web full-stack da Kenzie Academy Brasil enquanto os testes rodados nele foram desenvolvidos pelos professores da Kenzie para avaliar o projeto.
 
 ## Principais Linguagens e Tecnologias Utilizadas
 
@@ -64,4 +61,3 @@ npm run test
 yarn test
 ```
 
->>>>>>> 44566b96a33f984288961dbfb255e9f3887c2af3
