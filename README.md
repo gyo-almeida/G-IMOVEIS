@@ -1,6 +1,25 @@
 # 🏁 G-Imóveis - TypeORM com Relacionamentos
 
-Este projeto trata-se de um serviço de back-end responsável por gerenciar uma imobiliária utilizando TypeORM e relacionamentos com base no diagrama abaixo e foi desenvolvido por mim (Gyovanna) durante o curso de desenvolvimento web full-stack da Kenzie Academy Brasil porém os testes rodados nele foram desenvolvidos pelos professores da Kenzie para avaliar o projeto.
+Este projeto trata-se de um serviço de back-end responsável por gerenciar uma imobiliária utilizando Node.JS e TypeScript desenvolvido por mim durante o curso de desenvolvimento web full-stack da Kenzie Academy Brasil porém os testes rodados nele foram desenvolvidos pelos professores da Kenzie para avaliar o projeto.
+
+## Principais Linguagens e Tecnologias Utilizadas
+
+Node.js: Plataforma de desenvolvimento para construção de aplicações backend utilizando JavaScript.
+TypeScript: Linguagem de programação que adiciona tipagem estática ao JavaScript, proporcionando melhor escalabilidade e manutenibilidade ao código.
+
+## Dependências Principais
+
+- **@types/bcryptjs (v2.4.2):** Tipos TypeScript para a biblioteca bcryptjs, utilizada para criptografar senhas de forma segura.
+- **bcryptjs (v2.4.3):** Biblioteca para realizar hash de senhas de maneira segura.
+- **dotenv (v16.0.3):** Utilizada para carregar variáveis de ambiente de um arquivo .env para o processo Node.js.
+- **express (v4.18.2):** Framework web para Node.js, facilitando o desenvolvimento de aplicativos web.
+- **express-async-errors (v3.1.1):** Pacote para simplificar o tratamento de erros assíncronos no Express.
+- **jsonwebtoken (v9.0.0):** Biblioteca para gerar e verificar JSON Web Tokens (JWT), comumente usada para autenticação.
+- **pg (v8.9.0):** Driver PostgreSQL para Node.js, permitindo a conexão com bancos de dados PostgreSQL.
+- **reflect-metadata (v0.1.13):** Biblioteca que adiciona suporte a metadados para reflexão em tempo de execução no TypeScript.
+- **typeorm (v0.3.11):** ORM para Node.js e TypeScript, facilitando a interação com bancos de dados relacionais.
+- **zod (v3.20.6):** Biblioteca de validação de esquemas para TypeScript, usada para garantir a integridade dos dados.
+
 
 ![Relacionamentos desenvolvidos dentro do projeto](src/image/RELACIONAMENTOS.png)
 
@@ -26,54 +45,6 @@ npm init -y
 yarn init -y
 ```
 
-## Dependências dos testes
-
-Para que os testes funcionem corretamente, existem algumas dependências.
-
-* O `app` tem que ser exportado como **default** em **src/app.ts**. Exemplo:
-
-```ts
-export default app
-```
-
-* O `AppDataSource` tem que ser exportado em **src/data-source.ts**. Exemplo:
-
-```ts
-export { AppDataSource }
-
-// ou
-
-export const AppDataSource = new DataSource(dataSourceConfig());
-```
-
-* As Entities **tem que ter os respectivos nomes** e **tem que ter a exportação centralizada** em **entities/index.ts**. Exemplo:
-
-```ts
-import { Address } from './<arquivo>';
-import { Category } from './<arquivo>';
-import { RealEstate } from './<arquivo>';
-import { Schedule } from './<arquivo>';
-import { User } from './<arquivo>';
-
-export { Address, RealEstate, Category, User, Schedule };
-```
-
-## Sobre os testes
-
-Essa aplicação possui testes, que serão utilizados para validar, se todas as regras de negócio foram aplicadas de maneira correta.
-
-Os testes estão localizados em `src/__tests__`.
-
-Na subpasta `integration` estão os testes.
-
-Já na subpasta `mocks` estão os dados que serão utilizados para os testes.
-
-No arquivo `jest.config.ts` estão algumas configurações necessárias para os testes rodarem.
-
-**`De modo algum altere qualquer um desses arquivos.`** Isso poderá comprometer a integridade dos testes.
-
-E também não altere o script de `test` localizado no `package.json`. Isso será utilizado para rodar os testes.
-
 ## Rodando os testes
 
 Para rodar os testes é necessário que no seu terminal, você esteja dentro do diretório do projeto.
@@ -90,42 +61,3 @@ npm run test
 yarn test
 ```
 
-### Rodar todos os testes e ter um log ainda mais completo
-
-```bash
-# caso use npm
-npm run test --all
-
-# caso use yarn
-yarn test --all
-```
-
-### Rodar os testes de uma pasta específica
-
-> detalhe: repare que tests está envolvido por 2 underlines. Isso se chama ***dunder***.
-
-```bash
-# caso use npm
-npm run test <subpasta>
-
-# caso use yarn
-yarn test <subpasta>
-```
-
-### Rodar os testes de um arquivo específico
-
-```bash
-# caso use npm
-npm run test <subpasta>/<arquivo>
-
-# caso use yarn
-yarn test <subpasta>/<arquivo>
-```
-
-**Caso você queira verificar todas as opções de execução de testes, visite a [Documentação oficial do Jest](https://jestjs.io/docs/cli)**
-
-Após rodar um dos comandos aparecerá um log no seu terminal, contendo as informações da execução do teste.
-
-**Observação:** O teste pode demorar alguns segundos para ser finalizado. Quanto maior for o teste, mais tempo será consumido para a execução.
-
-### Agora que já sabe como iniciar o seu projeto e rodar os testes, é hora de colocar a mão no código
