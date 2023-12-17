@@ -4,8 +4,8 @@ Este projeto trata-se de um serviço de back-end responsável por gerenciar uma 
 
 ## Principais Linguagens e Tecnologias Utilizadas
 
-Node.js: Plataforma de desenvolvimento para construção de aplicações backend utilizando JavaScript.
-TypeScript: Linguagem de programação que adiciona tipagem estática ao JavaScript, proporcionando melhor escalabilidade e manutenibilidade ao código.
+- **Node.js:** Plataforma de desenvolvimento para construção de aplicações backend utilizando JavaScript.
+- **TypeScript:** Linguagem de programação que adiciona tipagem estática ao JavaScript, proporcionando melhor escalabilidade e manutenibilidade ao código.
 
 ## Dependências Principais
 
